@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sistema Medico</string>
+    <string name="seccion_persona">Persona</string>
+    <string name="seccion_medico">Médico</string>
+    <string name="seccion_admin">Administrativo</string>
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_pacientes">Pacientes</string>
+    <string name="nav_citas">Citas</string>
+    <string name="nav_factura">Factura</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+</resources>

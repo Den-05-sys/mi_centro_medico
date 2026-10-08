@@ -1,0 +1,116 @@
+package com.S356.myapply;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+
+public class Pacientes extends AppCompatActivity {
+
+    private MaterialToolbar toolbar;
+    private ExtendedFloatingActionButton fabRegistrarPaciente;
+
+    private TextInputLayout tilBuscarPaciente;
+    private TextInputEditText etBuscarPaciente;
+    private RecyclerView rvListPacientes;
+    private List_adapter listAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_pacientes);
+
+        View mainView = findViewById(R.id.main);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
+        }
+
+        toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationOnClickListener(v -> finish());
+        }
+
+        fabRegistrarPaciente = findViewById(R.id.fabRegistrarPaciente);
+        if (fabRegistrarPaciente != null) {
+            fabRegistrarPaciente.setOnClickListener(v -> {
+                Intent intent = new Intent(Pacientes.this, Registrar_paciente.class);
+                startActivity(intent);
+            });
+        }
+
+        tilBuscarPaciente = findViewById(R.id.tilBuscarPaciente);
+        etBuscarPaciente = findViewById(R.id.etBuscarPaciente);
+        rvListPacientes = findViewById(R.id.rvListPacientes);
+
+        if (rvListPacientes != null) {
+            rvListPacientes.setLayoutManager(new LinearLayoutManager(this));
+
+            ArrayList<Paciente> pacientesData = new ArrayList<>();
+            pacientesData.add(new Paciente("Juan", "Pérez", "99887766D", 55, "col", 1.70, "HC-2024-001"));
+            pacientesData.add(new Paciente("María", "Gómez", "11223344E", 40, "col", 1.65, "HC-2024-002"));
+            pacientesData.add(new Paciente("Carlos", "Rodríguez", "55667788F", 62, "col", 1.78, "HC-2024-003"));
+
+            listAdapter = new List_adapter(pacientesData, paciente -> {
+                if (etBuscarPaciente != null) {
+                    etBuscarPaciente.setText(paciente.getNombreCompleto());
+                }
+                rvListPacientes.setVisibility(View.GONE);
+            });
+            rvListPacientes.setAdapter(listAdapter);
+        }
+
+        View.OnClickListener listenerMostrarLista = v -> {
+            if (rvListPacientes != null) {
+                rvListPacientes.setVisibility(View.VISIBLE);
+            }
+        };
+
+        if (etBuscarPaciente != null) {
+            etBuscarPaciente.setOnClickListener(listenerMostrarLista);
+            etBuscarPaciente.setOnFocusChangeListener((v, hasFocus) -> {
+                if (hasFocus && rvListPacientes != null) {
+                    rvListPacientes.setVisibility(View.VISIBLE);
+                }
+            });
+
+            etBuscarPaciente.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (rvListPacientes != null) {
+                        rvListPacientes.setVisibility(View.VISIBLE);
+                    }
+                    if (listAdapter != null) {
+                        listAdapter.filtrar(s.toString());
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+        }
+    }
+}

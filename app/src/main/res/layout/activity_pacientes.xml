@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CentroMedico.mostrarPacientes() → loop Paciente.mostrarInfo() -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cm_fondo"
+    android:orientation="vertical"
+    tools:context=".Pacientes">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cm_fondo"
+        app:title="Pacientes"
+        app:subtitle="1 registrado"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationContentDescription="Volver"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="false">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="96dp"
+                android:divider="@drawable/espacio_12"
+                android:showDividers="middle">
+                <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilBuscarPaciente"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Buscar por nombre, DNI o historia"
+                    app:startIconDrawable="@drawable/ic_search">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etBuscarPaciente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListPacientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:visibility="gone"
+                    tools:listitem="@layout/activity_paciente_item"
+                    tools:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvPacientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_listpaciente" />
+
+                <TextView android:id="@+id/tvSinPacientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="24dp"
+                    android:drawablePadding="8dp"
+                    android:text="Los pacientes registrados aparecen aquí."
+                    android:textColor="@color/cm_texto_secundario"
+                    android:visibility="gone"
+                    app:drawableTopCompat="@drawable/ic_group" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:id="@+id/fabRegistrarPaciente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:text="Registrar"
+            app:icon="@drawable/ic_add" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_nav_admin"
+        app:labelVisibilityMode="labeled" />
+</LinearLayout>

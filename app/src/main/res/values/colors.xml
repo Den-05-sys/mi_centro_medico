@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#F4F5F3</color>
+    <color name="cm_fondo">#F4F5F3</color>
+    <color name="cm_primario">#1E3A34</color>
+    <color name="cm_primario_contenedor">#D2ECE2</color>
+    <color name="cm_texto_secundario">#5F6368</color>
+    <color name="cm_info">#0061A4</color>
+    <color name="cm_info_contenedor">#D1E4FF</color>
+    <color name="cm_badge_pendiente_bg">#FDE8E1</color>
+    <color name="cm_badge_pendiente_text">#A83B1E</color>
+    <color name="text_primary">#1A1C1E</color>
+    <color name="accent_persona">#006A60</color>
+    <color name="accent_medico">#0061A4</color>
+    <color name="accent_admin">#825500</color>
+</resources>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Inicio del rol Administrativo: accesos a registrarPaciente, agendarCita, mostrarPacientes, generarFactura -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cm_fondo"
+    android:orientation="vertical"
+    tools:context=".Admin_inicio">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cm_fondo"
+        app:title="Hola, María"
+        app:subtitle="Administrativo · Recepción"
+        app:menu="@menu/menu_cerrar_sesion"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <FrameLayout android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="false">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="96dp"
+                android:divider="@drawable/espacio_12"
+                android:showDividers="middle">
+                <androidx.gridlayout.widget.GridLayout android:id="@+id/gridAcciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="-6dp"
+                    app:columnCount="2">
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardRegistrarPaciente"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="108dp"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <ImageView android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/bg_icono_rol"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_person"
+                                android:importantForAccessibility="no" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:text="Registrar paciente"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardAgendarCita"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="108dp"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <ImageView android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/bg_icono_rol"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_calendar"
+                                android:importantForAccessibility="no" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:text="Agendar cita"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardVerPacientes"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="108dp"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <ImageView android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/bg_icono_rol"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_group"
+                                android:importantForAccessibility="no" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:text="Ver pacientes"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardGenerarFactura"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="108dp"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <ImageView android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/bg_icono_rol"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_receipt"
+                                android:importantForAccessibility="no" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:text="Generar factura"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.gridlayout.widget.GridLayout>
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Próximas citas"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textColor="@color/cm_texto_secundario" />
+
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvProximasCitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_cita" />
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Resumen"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textColor="@color/cm_texto_secundario" />
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:divider="@drawable/espacio_12"
+                    android:showDividers="middle">
+                    <com.google.android.material.card.MaterialCardView style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+                            <TextView android:id="@+id/tvTotalPacientes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                                tools:text="1" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pacientes"
+                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                                android:textColor="@color/cm_texto_secundario" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+                            <TextView android:id="@+id/tvTotalConsultas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                                tools:text="1" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Consultas"
+                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                                android:textColor="@color/cm_texto_secundario" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+                            <TextView android:id="@+id/tvTotalEmpleados"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                                tools:text="3" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Empleados"
+                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                                android:textColor="@color/cm_texto_secundario" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_nav_admin"
+        app:labelVisibilityMode="labeled" />
+</LinearLayout>

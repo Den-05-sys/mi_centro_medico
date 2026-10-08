@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cm_fondo"
+    android:orientation="vertical"
+    tools:context=".Administrar_medicamento">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/btnVolver"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cm_fondo"
+        app:navigationContentDescription="Volver"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Administrar medicamento"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/espacio_12"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="96dp"
+                android:showDividers="middle">
+
+                <!-- Tarjeta Paciente -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPacienteItem"
+                    style="@style/Widget.Material3.CardView.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/tvAvatarPaciente"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/bg_avatar"
+                            android:gravity="center"
+                            android:text="JP"
+                            android:textColor="#13382C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@id/tvAvatarPaciente"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvNombrePaciente"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Juan Pérez"
+                                android:textColor="#1A1C1E"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvInfoPaciente"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="HC-2024-001 · 55 años"
+                                android:textColor="@color/cm_texto_secundario"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Sección: MEDICAMENTO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="MEDICAMENTO"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textColor="@color/cm_texto_secundario" />
+
+                <!-- Campo Nombre Medicamento -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMedicamento"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Medicamento">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etMedicamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        tools:text="Nombre del medicamento" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Campos Dosis y Vía -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:divider="@drawable/espacio_12"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilDosis"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Dosis">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDosis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            tools:text="--- mg" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilVia"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Vía">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etVia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            tools:text="Oral" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Tarjeta Informativa de Historial -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardInfoHistorial"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/cm_info_contenedor">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="12dp"
+                        android:gravity="center_vertical"
+                        android:padding="14dp"
+                        android:text="Se agregará como tratamiento al historial de Juan Pérez"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                        app:drawableStartCompat="@drawable/ic_history"
+                        app:drawableTint="@color/cm_info" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Sección: PRESCRIPCIÓN VIGENTE -->
+                <TextView
+                    android:id="@+id/tvPrescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:letterSpacing="0.03"
+                    android:text="PRESCRIPCIÓN VIGENTE"
+                    android:textColor="@color/cm_texto_secundario"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <!-- Detalle Prescripción -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPrescripcion"
+                    style="@style/Widget.Material3.CardView.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/tvTratamiento"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="[TRATAMIENTO]"
+                            android:textColor="#1A1C1E"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvPrescribirInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Prescrito por la Dra. Laura Gómez"
+                            android:textColor="@color/cm_texto_secundario"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp" />
+
+                <!-- Botón Registrar -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegistrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#005A44"
+                    android:text="Registrar administración"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="28dp"
+                    app:icon="@drawable/ic_check"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/white" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_nav_enfermero"
+        app:labelVisibilityMode="labeled" />
+</LinearLayout>

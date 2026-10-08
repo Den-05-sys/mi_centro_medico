@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/main" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/background">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <TextView
+            android:layout_width="244dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Sistema Médico"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <!-- Card: Persona -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardLab03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seccion_persona"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/accent_persona" />
+
+                <Button
+                    android:id="@+id/btnVerDetallePersona"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Ver detalle de Persona"
+                    android:textAlignment="center"
+                    android:textColor="#1302FF"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Card: Médico -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardLab03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seccion_medico"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/accent_medico" />
+
+                <Button
+                    android:id="@+id/btnVerDetalleMedico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Ver detalle del Médico"
+                    android:textAlignment="center"
+                    android:textColor="#1302FF"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardLab03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enfermero"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/accent_medico" />
+
+                <Button
+                    android:id="@+id/btnVerDetalleEnfermero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Ver detalle del Enfermero"
+                    android:textAlignment="center"
+                    android:textColor="#1302FF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Card: Administrativo -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardLab03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seccion_admin"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/accent_admin" />
+
+                <Button
+                    android:id="@+id/btnVerDetalleAdministrativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Ver detalle del Administrativo"
+                    android:textAlignment="center"
+                    android:textColor="#1302FF"
+                    android:textColorHighlight="#B33FB5"
+                    android:textSize="24sp" />
+
+
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</ScrollView>
