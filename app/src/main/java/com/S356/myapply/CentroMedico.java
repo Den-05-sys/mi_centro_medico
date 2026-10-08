@@ -10,6 +10,9 @@ public class CentroMedico {
     private String nombre;
 
     RecyclerView recyclerPacientes;
+    RecyclerView recyclerMedicos;
+    RecyclerView recyclerConsultas;
+
 
     List<Empleado>empleados;
     List<Consulta>consultas;
@@ -29,54 +32,74 @@ public class CentroMedico {
 
     }
 
-    Medico medico1 = new Medico("Laura", "Gómez", "cc", "1234",
-            43, "col", 1.70, "m1233", 4.000000,"Cardiologa","98765");
-
-    Enfermero enfermero1 = new Enfermero("Carlos", "Ruiz", "87654321B", 35,
-            "ENF-014", 2200.0, "2020-06-01", "Mañana");
-
-    Administrativo admin1 = new Administrativo("María", "López", "11223344C", "4766879",
-            45, "col", 1.70, "Amd1233",1800.0,"Ti","Administrativo");
-    Paciente paciente1 = new Paciente("Juan", "Pérez", "99887766D", 55,"col", 1.70,"HC-2024-001");
-
-    public void setNombre(String nombre){
-        this.nombre=nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
-    public void contratar(Empleado empleado){
+
+    public void contratar(Empleado empleado) {
         empleados.add(empleado);
     }
-    public void registrarPaciente(Paciente paciente){
-        pacientes.add(paciente);
 
+    public void registrarPaciente(Paciente paciente) {
+        pacientes.add(paciente);
     }
-    public void agendarConsulta(Consulta consulta){
+
+    public void registrarMedico(Medico medico) {
+        medicos.add(medico);
+
+        // Como Medico es un Empleado,
+        // también lo agregamos al personal
+        empleados.add(medico);
+    }
+
+    public void agendarConsulta(Consulta consulta) {
         consultas.add(consulta);
+
         System.out.println("Consulta agendada");
         consulta.mostrarInfo();
     }
-    public void mostrarPersonal(){
+
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public List<Medico> getMedicos() {
+        return medicos;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void mostrarPersonal() {
 
         System.out.println("Personal:");
-        for (Empleado empleado: empleados){
+
+        for (Empleado empleado : empleados) {
             System.out.println(empleado.getNombreCompleto());
         }
     }
-    public void mostrarPacientes(){
 
-        for (Paciente paciente : pacientes){
+    public void mostrarPacientes() {
+
+        for (Paciente paciente : pacientes) {
             System.out.println(paciente.getNombreCompleto());
         }
-
     }
 
-    public void mostrarMedicos(){
+    public void mostrarMedicos() {
 
-        for (Medico medico : medicos){
+        for (Medico medico : medicos) {
             System.out.println(medico.getNombreCompleto());
         }
-
     }
 }
+

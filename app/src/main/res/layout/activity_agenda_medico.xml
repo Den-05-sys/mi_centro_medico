@@ -43,18 +43,28 @@
                 <!-- Selección de Paciente -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilPaciente"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Paciente">
 
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/acPaciente"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPaciente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="none"
-                        tools:text="Juan Pérez — HC-2024-001" />
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        tools:text="Seleccione un paciente" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPacientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:visibility="gone"
+                    tools:listitem="@layout/activity_paciente_item"
+                    tools:visibility="visible" />
 
                 <!-- Selección de Fecha -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -125,7 +135,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                            tools:text="Juan Pérez con Laura Gómez" />
+                            tools:text="Seleccione un paciente" />
 
                         <TextView
                             android:id="@+id/tvResumenFechaMotivo"

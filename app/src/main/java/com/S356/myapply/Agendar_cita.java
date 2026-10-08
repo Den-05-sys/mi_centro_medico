@@ -67,24 +67,15 @@ public class Agendar_cita extends AppCompatActivity {
         tvResumenCita = findViewById(R.id.tvResumenCita);
         btnConfirmarCita = findViewById(R.id.btnConfirmarCita);
 
-        // --- Configuración de Pacientes ---
         if (rvPacientes != null) {
             rvPacientes.setLayoutManager(new LinearLayoutManager(this));
-
-            ArrayList<Paciente> listaPacientes = new ArrayList<>();
-            listaPacientes.add(new Paciente("Juan", "Pérez", "99887766D", 55, "col", 1.70, "HC-2024-001"));
-            listaPacientes.add(new Paciente("María", "Gómez", "11223344E", 40, "col", 1.65, "HC-2024-002"));
-
-            Paciente_adapter adapterPacientes = new Paciente_adapter(listaPacientes, paciente -> {
-                pacienteSeleccionado = paciente;
-                if (etPaciente != null) {
-                    etPaciente.setText(paciente.getNombreCompleto());
-                }
-                rvPacientes.setVisibility(View.GONE);
-                actualizarResumen();
-            });
-            rvPacientes.setAdapter(adapterPacientes);
         }
+
+        if (rvMedicos != null) {
+            rvMedicos.setLayoutManager(new LinearLayoutManager(this));
+        }
+
+        cargarPacientesYMedicos();
 
         View.OnClickListener togglePacientesListener = v -> {
             if (rvPacientes != null) {
@@ -101,28 +92,6 @@ public class Agendar_cita extends AppCompatActivity {
 
         if (etPaciente != null) etPaciente.setOnClickListener(togglePacientesListener);
         if (tilPaciente != null) tilPaciente.setOnClickListener(togglePacientesListener);
-
-
-        // --- Configuración de Médicos ---
-        if (rvMedicos != null) {
-            rvMedicos.setLayoutManager(new LinearLayoutManager(this));
-
-            ArrayList<Medico> listaMedicos = new ArrayList<>();
-            listaMedicos.add(new Medico("Laura", "Gómez", "cc", "98765", 40, "col", 1.65,
-                    "Ac256", 1800.0, "Cardiología", "98543"));
-            listaMedicos.add(new Medico("Carlos", "Martínez", "cc", "87654", 48, "col", 1.75,
-                    "Ac257", 2000.0, "Pediatría", "98544"));
-
-            Medico_adapter adapterMedicos = new Medico_adapter(listaMedicos, medico -> {
-                medicoSeleccionado = medico;
-                if (etMedico != null) {
-                    etMedico.setText(medico.getNombreCompleto());
-                }
-                rvMedicos.setVisibility(View.GONE);
-                actualizarResumen();
-            });
-            rvMedicos.setAdapter(adapterMedicos);
-        }
 
         View.OnClickListener toggleMedicosListener = v -> {
             if (rvMedicos != null) {
@@ -153,6 +122,44 @@ public class Agendar_cita extends AppCompatActivity {
                 Toast.makeText(Agendar_cita.this, "Cita agendada correctamente", Toast.LENGTH_SHORT).show();
                 finish();
             });
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarPacientesYMedicos();
+    }
+
+    private void cargarPacientesYMedicos() {
+        if (rvPacientes != null) {
+            ArrayList<Paciente> listaPacientes =
+                    new ArrayList<>(Datos_app.centroMedico.getPacientes());
+
+            Paciente_adapter adapterPacientes = new Paciente_adapter(listaPacientes, paciente -> {
+                pacienteSeleccionado = paciente;
+                if (etPaciente != null) {
+                    etPaciente.setText(paciente.getNombreCompleto());
+                }
+                rvPacientes.setVisibility(View.GONE);
+                actualizarResumen();
+            });
+            rvPacientes.setAdapter(adapterPacientes);
+        }
+
+        if (rvMedicos != null) {
+            ArrayList<Medico> listaMedicos =
+                    new ArrayList<>(Datos_app.centroMedico.getMedicos());
+
+            Medico_adapter adapterMedicos = new Medico_adapter(listaMedicos, medico -> {
+                medicoSeleccionado = medico;
+                if (etMedico != null) {
+                    etMedico.setText(medico.getNombreCompleto());
+                }
+                rvMedicos.setVisibility(View.GONE);
+                actualizarResumen();
+            });
+            rvMedicos.setAdapter(adapterMedicos);
         }
     }
 

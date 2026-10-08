@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,6 @@ public class Pacientes extends AppCompatActivity {
     private MaterialToolbar toolbar;
     private ExtendedFloatingActionButton fabRegistrarPaciente;
 
-    private TextInputLayout tilBuscarPaciente;
     private TextInputEditText etBuscarPaciente;
     private RecyclerView rvListPacientes;
     private List_adapter listAdapter;
@@ -59,25 +57,12 @@ public class Pacientes extends AppCompatActivity {
             });
         }
 
-        tilBuscarPaciente = findViewById(R.id.tilBuscarPaciente);
         etBuscarPaciente = findViewById(R.id.etBuscarPaciente);
         rvListPacientes = findViewById(R.id.rvListPacientes);
 
         if (rvListPacientes != null) {
             rvListPacientes.setLayoutManager(new LinearLayoutManager(this));
-
-            ArrayList<Paciente> pacientesData = new ArrayList<>();
-            pacientesData.add(new Paciente("Juan", "Pérez", "99887766D", 55, "col", 1.70, "HC-2024-001"));
-            pacientesData.add(new Paciente("María", "Gómez", "11223344E", 40, "col", 1.65, "HC-2024-002"));
-            pacientesData.add(new Paciente("Carlos", "Rodríguez", "55667788F", 62, "col", 1.78, "HC-2024-003"));
-
-            listAdapter = new List_adapter(pacientesData, paciente -> {
-                if (etBuscarPaciente != null) {
-                    etBuscarPaciente.setText(paciente.getNombreCompleto());
-                }
-                rvListPacientes.setVisibility(View.GONE);
-            });
-            rvListPacientes.setAdapter(listAdapter);
+            cargarPacientes();
         }
 
         View.OnClickListener listenerMostrarLista = v -> {
@@ -111,6 +96,26 @@ public class Pacientes extends AppCompatActivity {
                 @Override
                 public void afterTextChanged(Editable s) {}
             });
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarPacientes();
+    }
+
+    private void cargarPacientes() {
+        if (rvListPacientes != null) {
+            ArrayList<Paciente> pacientesData = new ArrayList<>(Datos_app.centroMedico.getPacientes());
+
+            listAdapter = new List_adapter(pacientesData, paciente -> {
+                if (etBuscarPaciente != null) {
+                    etBuscarPaciente.setText(paciente.getNombreCompleto());
+                }
+                rvListPacientes.setVisibility(View.GONE);
+            });
+            rvListPacientes.setAdapter(listAdapter);
         }
     }
 }

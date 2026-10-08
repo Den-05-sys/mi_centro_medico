@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        if (correoIngresado.equals("admin@gmail.com") && passwordIngresada.equals("1234")) {
+        if (correoIngresado.equals("usuario@gmail.com") && passwordIngresada.equals("lavidaesbella")) {
             Toast.makeText(Login.this, "Inicio de sesión correcto", Toast.LENGTH_SHORT).show();
             navegarA(targetClass);
         } else {

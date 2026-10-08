@@ -13,11 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class Personal extends AppCompatActivity {
     private Button btnContratar;
     private LinearLayout btnTodo;
     private LinearLayout btnEnfermeros;
+    private RecyclerView rvEnfermeros;
     private LinearLayout btnMedicos;
     private TextView btnAdministrativos;
     private ImageView btnCerrarSesion;
@@ -51,6 +53,12 @@ public class Personal extends AppCompatActivity {
 
         if (btnTodo != null) {
             btnTodo.setOnClickListener(v -> {
+                Intent intent = new Intent(Personal.this, Contrartar_empleado.class);
+                startActivity(intent);
+            });
+        }
+        if (btnEnfermeros != null) {
+            btnEnfermeros.setOnClickListener(v -> {
                 Intent intent = new Intent(Personal.this, Contrartar_empleado.class);
                 startActivity(intent);
             });
