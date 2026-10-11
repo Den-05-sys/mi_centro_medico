@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -28,6 +29,7 @@ public class Agenda_medico extends AppCompatActivity {
 
     private TextInputLayout tilPaciente;
     private TextInputEditText etPaciente;
+    private BottomNavigationView bottomNav;
     private RecyclerView rvPacientes;
     private TextView tvResumenCita;
 
@@ -54,6 +56,7 @@ public class Agenda_medico extends AppCompatActivity {
         etPaciente = findViewById(R.id.etPaciente);
         rvPacientes = findViewById(R.id.rvPacientes);
         tvResumenCita = findViewById(R.id.tvResumenCita);
+        bottomNav = findViewById(R.id.bottomNav);
 
         if (btnIniciarConsulta != null) {
             btnIniciarConsulta.setOnClickListener(v -> {
@@ -63,6 +66,25 @@ public class Agenda_medico extends AppCompatActivity {
                 }
                 Intent intent = new Intent(Agenda_medico.this, Consulta_medico.class);
                 startActivity(intent);
+            });
+        }
+
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.nav_agenda);
+            bottomNav.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_agenda) {
+                    return true;
+                } else if (itemId == R.id.nav_signos) {
+                    startActivity(new Intent(Agenda_medico.this, Signos_vitales.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.nav_historial) {
+                    startActivity(new Intent(Agenda_medico.this, Historial_medi.class));
+                    finish();
+                    return true;
+                }
+                return false;
             });
         }
 

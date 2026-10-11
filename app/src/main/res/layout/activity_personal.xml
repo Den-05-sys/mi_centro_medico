@@ -27,9 +27,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="96dp">
 
-
-
-                <!-- Encabezado: Título, Subtítulo y Botón de Salida -->
+                <!-- Encabezado -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +43,7 @@
 
                         <com.google.android.material.appbar.MaterialToolbar
                             android:id="@+id/toolbar"
-                            android:layout_width="15dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="?attr/actionBarSize"
                             android:background="@color/cm_fondo"
                             app:navigationContentDescription="Volver"
@@ -66,12 +64,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Clínica San Rafael · 3 empleados"
+                            android:text="Clínica San Rafael"
                             android:textColor="@color/cm_texto_secundario"
                             android:textSize="14sp" />
                     </LinearLayout>
-
-
                 </RelativeLayout>
 
                 <!-- Tabs (Todos | Enfermeros | Médicos) -->
@@ -86,6 +82,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:orientation="vertical">
 
                         <TextView
@@ -109,6 +107,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:orientation="vertical">
 
                         <TextView
@@ -132,6 +132,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:orientation="vertical">
 
                         <TextView
@@ -156,238 +158,46 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:paddingVertical="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:text="Administrativos"
                     android:textColor="#1E3A34"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <!-- Tarjeta de Empleados -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardPacienteItem"
-                    style="@style/Widget.Material3.CardView.Outlined"
+                <!-- RecyclerView de Lista de Empleados -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEmpleados"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="16dp"
-                    app:strokeColor="#E0E0E0"
-                    app:strokeWidth="1dp">
+                    android:layout_marginTop="12dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/activity_empleado_adapter" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- Empleado 1: Laura Gómez -->
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/tvAvatarEmpleado1"
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:background="@drawable/bg_avatar"
-                                android:gravity="center"
-                                android:text="LG"
-                                android:textColor="#13382C"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="12dp"
-                                android:layout_toStartOf="@id/tvBadgeEstado1"
-                                android:layout_toEndOf="@id/tvAvatarEmpleado1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvNombreEmpleado1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Laura Gómez"
-                                    android:textColor="#1A1C1E"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/tvInfoEmpleado1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:text="Médico · Cardióloga"
-                                    android:textColor="@color/cm_texto_secundario"
-                                    android:textSize="13sp" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/tvBadgeEstado1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentTop="true"
-                                android:background="@drawable/bg_badge_pendiente"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="COL-98765"
-                                android:textColor="@color/cm_badge_pendiente_text"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-
-                        <!-- Empleado 2: Carlos Ruiz -->
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp">
-
-                            <TextView
-                                android:id="@+id/tvAvatarEmpleado2"
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:background="@drawable/bg_avatar"
-                                android:gravity="center"
-                                android:text="CR"
-                                android:textColor="#13382C"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="12dp"
-                                android:layout_toStartOf="@id/tvBadgeEstado2"
-                                android:layout_toEndOf="@id/tvAvatarEmpleado2"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvNombreEmpleado2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Carlos Ruiz"
-                                    android:textColor="#1A1C1E"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/tvInfoEmpleado2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:text="Enfermero · Turno Mañana"
-                                    android:textColor="@color/cm_texto_secundario"
-                                    android:textSize="13sp" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/tvBadgeEstado2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentTop="true"
-                                android:background="@drawable/bg_badge_pendiente"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="EMP-0002"
-                                android:textColor="@color/cm_badge_pendiente_text"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-
-                        <!-- Empleado 3: María López -->
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp">
-
-                            <TextView
-                                android:id="@+id/tvAvatarEmpleado3"
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:background="@drawable/bg_avatar"
-                                android:gravity="center"
-                                android:text="ML"
-                                android:textColor="#13382C"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="12dp"
-                                android:layout_toStartOf="@id/tvBadgeEstado3"
-                                android:layout_toEndOf="@id/tvAvatarEmpleado3"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvNombreEmpleado3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="María López"
-                                    android:textColor="#1A1C1E"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/tvInfoEmpleado3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:text="Administrativo · Recepción"
-                                    android:textColor="@color/cm_texto_secundario"
-                                    android:textSize="13sp" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/tvBadgeEstado3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentTop="true"
-                                android:background="@drawable/bg_badge_pendiente"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="EMP-0003"
-                                android:textColor="@color/cm_badge_pendiente_text"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-
-                        <!-- Botón Contratar -->
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnContratar"
-                            style="@style/Widget.Material3.Button.OutlinedButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="56dp"
-                            android:layout_marginTop="20dp"
-                            android:text="Contratar nuevo empleado"
-                            android:textAllCaps="false"
-                            android:textColor="#1A1C1E"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="28dp"
-                            app:icon="@drawable/ic_add"
-                            app:iconGravity="textStart"
-                            app:iconPadding="8dp"
-                            app:iconTint="#1A1C1E"
-                            app:strokeColor="#5F6368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                <!-- Botón Contratar -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnContratar"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Contratar nuevo empleado"
+                    android:textAllCaps="false"
+                    android:textColor="#1A1C1E"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="28dp"
+                    app:icon="@drawable/ic_add"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="#1A1C1E"
+                    app:strokeColor="#5F6368" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -45,6 +45,25 @@ public class Admin_inicio extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         bottomNav = findViewById(R.id.bottomNav);
 
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.nav_home);
+            bottomNav.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    return true;
+                } else if (itemId == R.id.nav_pacientes) {
+                    startActivity(new Intent(Admin_inicio.this, Paciente.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.nav_citas) {
+                    startActivity(new Intent(Admin_inicio.this, Agendar_cita.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            });
+        }
+
         if (cardRegistrarPaciente != null) {
             cardRegistrarPaciente.setOnClickListener(v -> {
                 Intent intent = new Intent(Admin_inicio.this, Registrar_paciente.class);

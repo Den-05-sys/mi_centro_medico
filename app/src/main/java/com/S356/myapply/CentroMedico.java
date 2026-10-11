@@ -20,7 +20,8 @@ public class CentroMedico {
 
     List<Medico>medicos;
 
-    Paciente_adapter adapter;
+    Paciente_adapter pacienteAdapter;
+    Empleado_adapter empleadoAdapter;
 
     public CentroMedico(String nombre){
         this.nombre=nombre;
