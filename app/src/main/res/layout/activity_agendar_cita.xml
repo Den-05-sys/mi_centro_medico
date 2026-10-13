@@ -51,6 +51,17 @@
                         android:cursorVisible="false"
                         tools:text="Seleccione un paciente" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilPaciente"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Paciente">
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/acPaciente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        tools:text="Juan Pérez — HC-2024-001" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPacientes"
